@@ -1,0 +1,24 @@
+.body{
+    background-color: #66CDAA;
+}
+
+.title{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+}
+
+.selection-box{
+    background-color: aquamarine;
+    max-height: 100%;
+    font-family: 'Pacifico', cursive;
+}
+
+.square-box{
+    max-width: 300px;
+    min-width: 300px;
+    transition: 0.5s ease;
+}
+
+.square-box:hover{
+    transform: scale(1.2);
+}
