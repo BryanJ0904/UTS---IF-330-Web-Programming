@@ -6,16 +6,21 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" >
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <title>Review your task!</title>
+    <title>Task Tracker</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-expand navbar-light bg-light justify-content-center">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="#">Register</a>
             <a class="nav-item nav-link" href="#">Login</a>
         </div>
     </nav>
+
     <div class="container">
+        <h1>To Do List</h1>
+        <br />
+        
+
     </div>
 
 
