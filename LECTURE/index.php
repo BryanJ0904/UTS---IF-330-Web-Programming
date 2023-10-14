@@ -1,5 +1,3 @@
-<?php
-//admin view
 <form action="admin.php" method="post">
     Nama: <input type="text" name="txtNama"><br>
     Harga: <input type="text" name="txtHarga"><br>
@@ -90,8 +88,5 @@ if (isset($_GET['delete_id'])) {
     $resetQuery = "ALTER TABLE resto AUTO_INCREMENT = 1";
     $queryReset = mysqli_query($con, $resetQuery);
 }
-
-?>
-
 
 ?>
