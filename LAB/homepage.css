@@ -22,3 +22,8 @@
 .square-box:hover{
     transform: scale(1.2);
 }
+
+#hidden{
+    background: transparent;
+	border: none;
+}
