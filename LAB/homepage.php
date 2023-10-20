@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" >
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&family=Yellowtail&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="homepage.js"></script>
     <title>Task Tracker</title>
@@ -41,7 +41,7 @@
                 <h2>View List</h2>
             </div>
             <div class="selection-box col-12 col-md mt-3 mt-lg-0 mx-3 d-flex flex-column justify-content-center align-items-center">
-                <form action="add.php"><button id="hidden" type="submit"><img class="square-box" class="img-fluid logo" src="./assets/add.png"/></button></form>
+                <form action="list.php"><button id="hidden" type="submit" name="action" value="add"><img class="square-box" class="img-fluid logo" src="./assets/add.png"/></button></form>
                 <h2>Add List</h2>
             </div>
             <div class="selection-box col-12 col-md mt-3 mt-xl-0 mx-3 d-flex flex-column justify-content-center align-items-center">
