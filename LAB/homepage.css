@@ -2,8 +2,16 @@
     background-color: #66CDAA;
 }
 
+#quotes{
+    font-family: 'Yellowtail', cursive;
+}
+
+#author{
+    font-family: 'Yellowtail', cursive;
+}
+
 .title{
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Kaushan Script', cursive;
     font-size: 72px;
 }
 

@@ -1,0 +1,15 @@
+.body{
+    background-color: #66CDAA;
+}
+
+.title{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 72px;
+}
+
+#hidden{
+    max-width: 50px;
+    max-height: 50px;
+    background: transparent;
+	border: none;
+}
