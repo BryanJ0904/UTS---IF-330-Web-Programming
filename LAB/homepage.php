@@ -24,8 +24,8 @@
     ?>
     <nav class="navbar navbar-expand navbar-light bg-light justify-content-center">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Register</a>
-            <a class="nav-item nav-link" href="#">Login</a>
+            <a class="nav-item nav-link" href="./loginregister/register.php">Register</a>
+            <a class="nav-item nav-link" href="./loginregister/login.php">Login</a>
         </div>
     </nav>
 
