@@ -89,9 +89,12 @@ if (isset($_GET['delete_id'])) {
                 <div class="form-group">
                     <label for="txtCategory">Category:</label>
                     <select name="txtCategory" id="txtCategory">
-                        <option value="makanan">Makanan</option>
-                        <option value="minuman">Minuman</option>
+                        <option value="appetizer">Appetizer</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="luch">Lunch</option>
+                        <option value="dinner">Dinner</option>
                         <option value="dessert">Dessert</option>
+                        <option value="drinks">Drinks</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">ADD</button>
@@ -157,9 +160,12 @@ if (isset($_GET['delete_id'])) {
                             echo "Deskripsi: <input type='text' name='new_deskripsi' value='" . $editData['deskripsi'] . "'><br>";
                             echo "Gambar: <input type='file' name='new_img' value='" . $editData['img'] . "'><br>";
                             echo "Categori: <select name='new_category' id='txtCategory'>
-                            <option value='" . ($editData['category']  === ''). "makanan'>Makanan</option>
-                            <option value='" . ($editData['category'] === '') . "minuman'>Minuman</option>
+                            <option value='" . ($editData['category']  === ''). "appetizer'>Appetizer</option>
+                            <option value='" . ($editData['category'] === '') . "breakfast'>Breakfast</option>
+                            <option value='" . ($editData['category'] === '') . "lunch'>Lunch</option>
+                            <option value='" . ($editData['category']  === ''). "dinner'>Dinner</option>
                             <option value='" . ($editData['category'] === '') . "dessert'>Dessert</option>
+                            <option value='" . ($editData['category'] === '') . "drinks'>Drinks</option>
                             </select>";
                             echo "<br>";
                             echo "<input type='submit' value='Simpan Perubahan'>";
