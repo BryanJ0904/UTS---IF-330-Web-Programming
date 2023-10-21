@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2023 at 10:09 AM
+-- Generation Time: Oct 21, 2023 at 01:35 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,12 +38,13 @@ CREATE TABLE `todolist` (
 --
 
 INSERT INTO `todolist` (`task`, `done`, `progress`) VALUES
-('Doing home chores', 1, 'Done'),
-('Doing homework', 0, 'In progress'),
-('Having fun', 0, 'Not yet started'),
-('Having mental breakdown', 1, 'Done'),
-('Sleep and crying for days', 0, 'Waiting on'),
-('Watching Netflix', 0, 'Waiting on');
+('Do home chores', 1, 'Done'),
+('Do homework', 0, 'In progress'),
+('Eat pizza with family', 0, 'Waiting on'),
+('Have fun', 0, 'Not yet started'),
+('Have mental breakdown', 1, 'Done'),
+('Sleep and cry for days', 0, 'Waiting on'),
+('Watch Netflix', 0, 'Waiting on');
 
 --
 -- Indexes for dumped tables

@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="list.css" />
+    <link rel="stylesheet" type="text/css" href="list.css?v=<?php echo time(); ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pacifico&family=Yellowtail&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" >
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" >
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;800&family=Kaushan+Script&family=Pacifico&family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        function toggleSwitch(switchElement) {
+            const isChecked = switchElement.checked;
+            let action = isChecked ? 'edit' : 'view';
+            let baseUrl = "<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>";
+            window.location.href = baseUrl + '/list.php?action=' + action;
+        }
+        function toggleModals() {
+            $('#exampleModal').modal('hide');
+        }
+    </script>
     <title>Task Tracker</title>
 </head>
 <body class="body">
@@ -23,27 +36,26 @@
         }
         if($_GET["action"] == "add"){
             echo "
-                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true' backdrop='static'>
+                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true'>
                     <div class='modal-dialog' role='document'>
                         <div class='modal-content'>
                             <div class='modal-header'>
                                 <h5 class='modal-title' id='exampleModalLabel'>Add new task</h5>
-                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <button class='close' data-dismiss='modal' aria-label='close' onclick='toggleModals()'>
                                     <span aria-hidden='true'>&times;</span>
                                 </button>
                             </div>
                             <div class='modal-body'>
-                                <form action='list.php'>
-                                    <input type='text' name='task' class='form-control' placeholder='What is on your mind?'/><br />
+                                <form action='list.php?action=view' method='POST'>
+                                    <input type='text' name='task' class='form-control' placeholder='What is on your mind?' required/><br />
                                     <label>What is the current status?</label><br />
-                                    <input type='radio' name='status' class='form-control' value='notstarted' />Not Started<br />
-                                    <input type='radio' name='status' class='form-control' value='waitingon' />Waiting On<br />
-                                    <input type='radio' name='status' class='form-control' value='inprogress' />In Progress<br />
-                                    <input type='radio' name='status' class='form-control' value='done' />Done<br />
+                                    <input type='radio' name='progress' value='Not yet started' required/>Not Started<br />
+                                    <input type='radio' name='progress' value='Waiting on' required/>Waiting On<br />
+                                    <input type='radio' name='progress' value='In progress' required/>In Progress<br />
+                                    <input type='radio' name='progress' value='Done' required/>Done<br />
                             </div>
                             <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                                <button type='button' class='btn btn-primary'>Save changes</button>
+                                <button type='submit' class='btn btn-primary' name='edit' value='true'>Save changes</button>
                                 </form>
                             </div>
                         </div>
@@ -68,7 +80,7 @@
 
             while($hasil = mysqli_fetch_array($selected)){
             echo "
-                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true' backdrop='static'>
+                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true' data-backdrop='static'>
                     <div class='modal-dialog' role='document'>
                         <div class='modal-content'>
                             <div class='modal-header'>
@@ -80,7 +92,7 @@
                             <div class='modal-body'>
                                 <form action='list.php?action=edit' method='POST'>
                                     <input type='hidden' name='id' value='" . $_GET['editid'] . "'/><br />
-                                    <input type='text' name='task' class='form-control' value='" . $hasil["task"] . "'/><br /> 
+                                    <input type='text' name='task' class='form-control' value='" . htmlspecialchars($hasil["task"], ENT_QUOTES, 'UTF-8') . "' required/><br /> 
                                     <label>What is the current progress?</label><br />
                                     <input type='radio' name='progress' value='Not yet started'" . ($hasil["progress"] == "Not yet started" ? 'checked' : '') . "/>Not Started<br />
                                     <input type='radio' name='progress' value='Waiting on'" . ($hasil["progress"] == "Waiting on" ? 'checked' : '') . "/>Waiting On<br />
@@ -108,24 +120,33 @@
                 </script>
             ";
         }
-        if (!empty($_POST["task"]) && !empty($_POST["progress"])) {
-            $stmt = $db->prepare("UPDATE todolist SET task = ?, done = ?, progress = ? WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET ?)");
+        if (isset($_POST['task'], $_POST['progress'])) {
+            if($_GET['action'] == 'edit'){
+                $stmt = $db->prepare("UPDATE todolist SET task = ?, done = ?, progress = ? WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET ?)");
         
-            if ($stmt) {
-                $done = ($_POST["progress"] == 'Done') ? 1 : 0;
+                if ($stmt) {
+                    $done = ($_POST["progress"] == 'Done') ? 1 : 0;
         
-                $stmt->bind_param("sisi", $_POST['task'], $done, $_POST['progress'], $_POST['id']);
-        
-                if ($stmt->execute()) {
-                    echo 'Update successful';
-                } else {
-                    echo 'Update failed';
+                    $stmt->bind_param("sisi", $_POST['task'], $done, $_POST['progress'], $_POST['id']);
+                    $stmt->execute();
+                    $stmt->close();
                 }
-        
-                $stmt->close();
-            } else {
-                echo 'Statement preparation failed';
             }
+            else if($_GET['action'] == 'view'){
+                $stmt = $db->prepare("INSERT INTO todolist VALUES (?, ?, ?);");
+        
+                if ($stmt) {
+                    $done = ($_POST["progress"] == 'Done') ? 1 : 0;
+        
+                    $stmt->bind_param("sis", $_POST['task'], $done, $_POST['progress']);
+                    $stmt->execute();
+                    $stmt->close();
+                }
+            }
+        }
+        if (isset($_POST['delete'])){
+            $delete = "DELETE FROM todolist WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET " . $_POST['id'] . ")";
+            $result = $db->query($delete);
         }
         
     ?>
@@ -136,7 +157,20 @@
         </div>
     </nav>
     <div class="mt-5 container d-flex flex-column justify-content-center">
-        <h1 class="title text-center">To Do List</h1>
+        <a href="homepage.php" style="color: black; font-family: 'Kaushan Script', cursive; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./assets/back.png" style="margin-right: 10px;"/>Back to Home</a>
+        <h1 class="title text-center">To Do List</h1><br />
+        <div class="d-flex justify-content-between align-self-center align-items-center">
+            <div class="mx-5 d-flex flex-column flex-md-row justify-content-center align-items-center" id="choose-box">
+                <div class="text-center">Edit Mode</div>
+                <div><jelly-switch id="example" name="switch" onToggle="toggleSwitch(this)" <?php echo ($_GET["action"] == "edit" ? 'aria-checked="true" checked' : ''); ?>></jelly-switch></div>
+                <div class="text-center">On/Off</div>
+            </div>
+            <div class="mx-5 d-flex flex-column flex-md-row justify-content-center align-self-center align-items-center" id="choose-box">
+                <div class="mr-md-3 d-flex align-self-center"><a href="list.php?action=add"><img class="img-fluid" id="add-button" src="./assets/add.png"/></a></div>
+                <div class="text-center">Add to list</div>
+            </div>
+        </div>
+        <br />
         <table class="table" id="table" style="border: 2px solid black">
             <thead>
                 <tr>
@@ -169,28 +203,34 @@
                     $baseUrl = dirname($_SERVER['SCRIPT_NAME']);
                     $url = $baseUrl . '/' . "list.php?action=edit&editid=" . urlencode($index);
                     echo "<td>
-                            <a href='$url'>
-                                <img style='width: 50px; height: 50px;' src='./assets/edit-button.png' />
-                            </a>
+                            <div class='d-flex'>
+                                <a href='$url'>
+                                    <img id='edit-button' src='./assets/edit-button.png' />
+                                </a>
+                                <form id='edit-button' action='list.php?action=edit' method='POST'>
+                                    <input type='hidden' name='delete' value='true'/>
+                                    <input type='hidden' name='id' value='" . $index ."'/>
+                                    <button id='hidden' type='submit' name='delete' value='true'>
+                                        <img id='edit-button' src='./assets/delete-button.png' />
+                                    </button>
+                                </form>
+                            </div>
                         </td>";
                 }
+                echo "</tr>";
                 $index++;
             }
             echo "</tbody></table>";
         ?>
-
-
-        
-
     </div>
     <script>
-        $.fn.dataTable.ext.order['custom-order'] = function(settings, col) {
-            return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
-                var customOrder = ['Not yet started', 'Waiting on', 'In progress', 'Done'];
-            return customOrder.indexOf(td.innerText);
-        });
-        };
         $(document).ready(function(){
+            $.fn.dataTable.ext.order['custom-order'] = function(settings, col) {
+                return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
+                    var customOrder = ['Not yet started', 'Waiting on', 'In progress', 'Done'];
+                    return customOrder.indexOf(td.innerText);
+                });
+            };
             $('#table').DataTable({
                 order: [[2, 'asc']],
                 columnDefs: [
@@ -207,6 +247,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
+    <script src ="//unpkg.com/jelly-switch"></script>
 </body>
 </html>
