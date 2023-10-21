@@ -2,17 +2,21 @@
     background-color: #66CDAA;
 }
 
-#quotes{
-    font-family: 'Yellowtail', cursive;
-}
-
-#author{
-    font-family: 'Yellowtail', cursive;
-}
-
 .title{
     font-family: 'Kaushan Script', cursive;
     font-size: 72px;
+}
+
+#quotes{
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#author{
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .selection-box{
