@@ -13,24 +13,29 @@
     <script src="homepage.js"></script>
     <title>Task Tracker</title>
 </head>
+
 <body class="body">
+    <?php require 'navbar.php'; ?>
+    <div class="container d-flex flex-column justify-content-center" style="height: 100vh">
     <?php
-        if(isset($_POST['actionView'])){
-            $action = "view";
+        if(isset($_COOKIE['user_id'], $_COOKIE['user_name'])){
+            $current_hour = date('H');
+            if ($current_hour >= 5 && $current_hour < 12) {
+                $greeting = 'Good morning';
+            } elseif ($current_hour >= 12 && $current_hour < 17) {
+                $greeting = 'Good afternoon';
+            } elseif ($current_hour >= 17 && $current_hour < 21) {
+                $greeting = 'Good evening';
+            } else {
+                $greeting = 'Good night';
+            }
+            echo "<h2 class='user text-center'>" . $greeting . " " . $_COOKIE['user_name'] . "!</h2>";
         }
-        else if(isset($_POST['actionEdit'])){
-            $action = "edit";
+        if(isset($_GET['error'])){
+            echo "<div class='alert alert-danger'>Please register/login first!</div>";
         }
     ?>
-    <nav class="navbar navbar-expand navbar-light bg-light justify-content-center">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="./loginregister/register.php">Register</a>
-            <a class="nav-item nav-link" href="./loginregister/login.php">Login</a>
-        </div>
-    </nav>
-
-    <div class="container d-flex flex-column justify-content-center" style="height: 100vh">
-        <div class="mb-5">
+        <div class="my-5">
             <p class="text-center" id="quotes"></p>
             <p class="text-center" id="author"></p>
         </div>

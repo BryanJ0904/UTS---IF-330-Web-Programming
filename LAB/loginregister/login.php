@@ -1,7 +1,6 @@
 <?php
-    session_start();
-    if (isset($_SESSION['SESSION_EMAIL'])) {
-        header("Location: welcome.php");
+    if (isset($_COOKIE['user_id'])) {
+        header("Location: ../homepage.php");
         die();
     }
 
@@ -26,8 +25,15 @@
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) === 1) {
-                $_SESSION['SESSION_EMAIL'] = $email;
-                header("Location: welcome.php");
+                $row = mysqli_fetch_assoc($result);
+                $user_id = $row['id'];
+                $user_name = $row['fname'];
+                $last_name = $row['lname'];
+                setcookie('user_id', $user_id, time() + 3600, '/');
+                setcookie('user_name', $user_name, time() + 3600, '/');
+                setcookie('last_name', $last_name, time() + 3600, '/');
+                header("Location: ../homepage.php");
+                exit;
             } else {
                 $msg = "<div class='alert alert-danger'>Email or password does not match.</div>";
             }
