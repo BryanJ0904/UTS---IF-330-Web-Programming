@@ -157,8 +157,8 @@
                     var value = td.innerText.toLowerCase();
 
                     var specialCases = {
-                        'Overdue': -1,
-                        'Done!': Infinity,
+                        'overdue': -1,
+                        'done!': 0
                     };
 
                     if (specialCases.hasOwnProperty(value)) {
@@ -168,7 +168,7 @@
                         var match = value.match(regex);
 
                         if (match) {
-                            return parseInt(match[1]);
+                            return parseInt(match[1]) + 2;
                         }
                     }
                     return 0;
