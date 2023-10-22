@@ -30,134 +30,17 @@
 </head>
 <body class="body">
     <?php
-        $db = mysqli_connect("localhost", "root", "", "webproglab");
-        if(mysqli_connect_error()){
-            die('Connect Error: ' . mysqli_connect_error());
-        }
-        if($_GET["action"] == "add"){
-            echo "
-                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true'>
-                    <div class='modal-dialog' role='document'>
-                        <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>Add new task</h5>
-                                <button class='close' data-dismiss='modal' aria-label='close' onclick='toggleModals()'>
-                                    <span aria-hidden='true'>&times;</span>
-                                </button>
-                            </div>
-                            <div class='modal-body'>
-                                <form action='list.php?action=view' method='POST'>
-                                    <input type='text' name='task' class='form-control' placeholder='What is on your mind?' required/><br />
-                                    <label>What is the current status?</label><br />
-                                    <input type='radio' name='progress' value='Not yet started' required/>Not Started<br />
-                                    <input type='radio' name='progress' value='Waiting on' required/>Waiting On<br />
-                                    <input type='radio' name='progress' value='In progress' required/>In Progress<br />
-                                    <input type='radio' name='progress' value='Done' required/>Done<br />
-                            </div>
-                            <div class='modal-footer'>
-                                <button type='submit' class='btn btn-primary' name='edit' value='true'>Save changes</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ";
+        require 'user_validation.php';
+        require 'db.php';
+        require 'action.php';
+        require 'add.php';
+        require 'edit.php';
+        require 'delete.php';
 
-            echo "
-                <script>
-                    $(document).ready(function(){
-                        $('#exampleModal').modal('show');
-                        $('#exampleModal').modal({
-                            backdrop: 'static'
-                        });
-                    });
-                </script>
-            ";
-        }
-        if (isset($_GET['editid'])) {
-            $selection = "SELECT * FROM todolist LIMIT 1 OFFSET " . $_GET['editid'];
-            $selected = mysqli_query($db, $selection);
-
-            while($hasil = mysqli_fetch_array($selected)){
-            echo "
-                <div class='modal fade' id='exampleModal' role='dialog' aria-hidden='true' data-backdrop='static'>
-                    <div class='modal-dialog' role='document'>
-                        <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h5 class='modal-title' id='exampleModalLabel'>Edit task</h5>
-                                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                    <span aria-hidden='true'>&times;</span>
-                                </button>
-                            </div>
-                            <div class='modal-body'>
-                                <form action='list.php?action=edit' method='POST'>
-                                    <input type='hidden' name='id' value='" . $_GET['editid'] . "'/><br />
-                                    <input type='text' name='task' class='form-control' value='" . htmlspecialchars($hasil["task"], ENT_QUOTES, 'UTF-8') . "' required/><br /> 
-                                    <label>What is the current progress?</label><br />
-                                    <input type='radio' name='progress' value='Not yet started'" . ($hasil["progress"] == "Not yet started" ? 'checked' : '') . "/>Not Started<br />
-                                    <input type='radio' name='progress' value='Waiting on'" . ($hasil["progress"] == "Waiting on" ? 'checked' : '') . "/>Waiting On<br />
-                                    <input type='radio' name='progress' value='In progress'" . ($hasil["progress"] == "In progress" ? 'checked' : '') . " />In Progress<br />
-                                    <input type='radio' name='progress' value='Done'" . ($hasil["progress"] == "Done" ? 'checked' : '') . " />Done<br />
-                            </div>
-                            <div class='modal-footer'>
-                                <button type='submit' class='btn btn-primary' name='edit' value='true'>Save changes</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ";
-            }
-
-            echo "
-                <script>
-                    $(document).ready(function(){
-                        $('#exampleModal').modal('show');
-                        $('#exampleModal').modal({
-                            backdrop: 'static'
-                        });
-                    });
-                </script>
-            ";
-        }
-        if (isset($_POST['task'], $_POST['progress'])) {
-            if($_GET['action'] == 'edit'){
-                $stmt = $db->prepare("UPDATE todolist SET task = ?, done = ?, progress = ? WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET ?)");
-        
-                if ($stmt) {
-                    $done = ($_POST["progress"] == 'Done') ? 1 : 0;
-        
-                    $stmt->bind_param("sisi", $_POST['task'], $done, $_POST['progress'], $_POST['id']);
-                    $stmt->execute();
-                    $stmt->close();
-                }
-            }
-            else if($_GET['action'] == 'view'){
-                $stmt = $db->prepare("INSERT INTO todolist VALUES (?, ?, ?);");
-        
-                if ($stmt) {
-                    $done = ($_POST["progress"] == 'Done') ? 1 : 0;
-        
-                    $stmt->bind_param("sis", $_POST['task'], $done, $_POST['progress']);
-                    $stmt->execute();
-                    $stmt->close();
-                }
-            }
-        }
-        if (isset($_POST['delete'])){
-            $delete = "DELETE FROM todolist WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET " . $_POST['id'] . ")";
-            $result = $db->query($delete);
-        }
-        
     ?>
-    <nav class="navbar navbar-expand navbar-light bg-light justify-content-center">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Register</a>
-            <a class="nav-item nav-link" href="#">Login</a>
-        </div>
-    </nav>
     <div class="mt-5 container d-flex flex-column justify-content-center">
         <a href="homepage.php" style="color: black; font-family: 'Kaushan Script', cursive; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./assets/back.png" style="margin-right: 10px;"/>Back to Home</a>
+        <?php echo "<h1 class='user text-center'>" . $_COOKIE['user_name'] . "'s </h1>" ?>
         <h1 class="title text-center">To Do List</h1><br />
         <div class="d-flex justify-content-between align-self-center align-items-center">
             <div class="mx-5 d-flex flex-column flex-md-row justify-content-center align-items-center" id="choose-box">
@@ -183,7 +66,7 @@
                 </tr>
             </thead>
         <?php
-            $q = "SELECT * FROM todolist";
+            $q = "SELECT * FROM todolist WHERE user_id = " . $_COOKIE['user_id'] . ";";
             $query = mysqli_query($db, $q);
             $index = 0;
 

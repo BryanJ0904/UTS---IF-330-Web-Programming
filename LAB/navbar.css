@@ -1,0 +1,84 @@
+
+.nav{
+  height: 6rem;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 600;
+}
+
+/*Styling logo*/
+.logo{
+  padding:1vh 1vw;
+  text-align: center;
+  text-transform: uppercase;
+}
+.logo img {
+  height: 3rem;
+  width: 3rem;
+  margin-right: 10px;
+}
+
+/*Styling Links*/
+.nav-links{
+  list-style: none;
+  padding: 0 0.7vw;
+  align-items: center;
+}
+.nav-links a{
+  text-decoration: none;
+  margin: 0 0.7vw;
+}
+.nav-links a:hover {
+  color: #61DAFB;
+}
+.nav-links{
+  position: relative;
+}
+.nav-links a::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0%;
+  background-color: #61DAFB;
+  position: absolute;
+  transition: all ease-in-out 250ms;
+  margin: 0 0 0 10%;
+}
+
+/*Styling Buttons*/
+.login-button{
+  background-color: transparent;
+  color: #131418;
+  border: 1.5px solid #f2f5f7;
+  border-radius: 2em;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+}
+.login-button:hover {
+  color: #131418;
+  background-color: #f2f5f7;
+  border:1.5px solid #f2f5f7;
+  transition: all ease-in-out 350ms;
+}
+.join-button{
+  color: #131418;
+  background-color: #61DAFB;
+  border: 1.5px solid #61DAFB;
+  border-radius: 2em;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.join-button:hover {
+  color: #f2f5f7;
+  background-color: transparent;
+  border:1.5px solid #f2f5f7;
+  transition: all ease-in-out 350ms;
+}
+

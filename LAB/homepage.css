@@ -2,6 +2,11 @@
     background-color: #66CDAA;
 }
 
+.user{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 48px;
+}
+
 .title{
     font-family: 'Kaushan Script', cursive;
     font-size: 72px;
