@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2023 at 01:07 PM
+-- Generation Time: Oct 22, 2023 at 04:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,15 +40,13 @@ CREATE TABLE `todolist` (
 --
 
 INSERT INTO `todolist` (`task`, `done`, `progress`, `user_id`, `due_date`) VALUES
-('Do home chores', 1, 'Done', 1, '2023-10-31'),
-('Do homework', 0, 'In progress', 1, '2023-10-31'),
-('Eat pizza with family', 0, 'Waiting on', 1, '2023-10-31'),
-('Have fun', 0, 'Not yet started', 1, '2023-10-23'),
-('Have mental breakdown', 1, 'Done', 1, '2023-10-31'),
-('Only a test', 0, 'In progress', 1, '2023-10-24'),
-('Sleep and cry for days', 0, 'Waiting on', 1, '2023-10-31'),
+('Do home chores', 1, 'Done', 1, '2023-10-21'),
+('Do homework', 1, 'Done', 1, '2023-10-24'),
+('Eat pizza with family', 0, 'Waiting on', 1, '2023-11-02'),
+('Have fun', 0, 'Not yet started', 1, '2023-10-12'),
+('Sleep and cry for days', 0, 'Waiting on', 1, '2023-10-26'),
 ('Traktir satu kelas', 0, 'Not yet started', 2, '2023-10-31'),
-('Watch Netflix', 0, 'Waiting on', 1, '2023-10-31');
+('Watch Netflix', 0, 'Waiting on', 1, '2023-10-26');
 
 -- --------------------------------------------------------
 

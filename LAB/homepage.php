@@ -31,6 +31,8 @@
                 $greeting = 'Good night';
             }
             echo "<h2 class='user text-center'>" . $greeting . " " . $_COOKIE['user_name'] . "!</h2>";
+        }else{
+            echo "<h2 class='user text-center'>Welcome Guest!</h2>" ;
         }
         if(isset($_GET['error'])){
             echo "<div class='alert alert-danger'>Please register/login first!</div>";

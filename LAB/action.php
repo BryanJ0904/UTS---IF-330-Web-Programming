@@ -1,12 +1,12 @@
 <?php
 if (isset($_POST['task'], $_POST['progress'], $_POST['id'], $_POST['due_date'])) {
     if($_GET['action'] == 'edit'){
-        $stmt = $db->prepare("UPDATE todolist SET task = ?, done = ?, progress = ?, due_date = ? WHERE task = (SELECT task FROM todolist LIMIT 1 OFFSET ?)");
+        $stmt = $db->prepare("UPDATE todolist SET task = ?, done = ?, progress = ?, due_date = ? WHERE task = (SELECT task FROM todolist WHERE user_id = ? LIMIT 1 OFFSET ?)");
 
         if ($stmt) {
             $done = ($_POST["progress"] == 'Done') ? 1 : 0;
 
-            $stmt->bind_param("sissi", $_POST['task'], $done, $_POST['progress'], $_POST['due_date'], $_POST['id']);
+            $stmt->bind_param("sissii", $_POST['task'], $done, $_POST['progress'], $_POST['due_date'], $_COOKIE['user_id'], $_POST['id']);
             $stmt->execute();
             $stmt->close();
         }
