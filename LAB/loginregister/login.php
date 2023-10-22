@@ -55,27 +55,20 @@
 <body>
     <section class="w3l-mockup-form">
         <div class="container">
-            <div class="workinghny-form-grid">
-                <div class="main-mockup">
-                    <div class="w3l_form align-self">
-                        <div class="left_grid_info">
-                            <img src="images/foods.png" alt="">
-                        </div>
-                    </div>
-                    <div class="content-wthree">
-                        <h2>Login</h2>
-                        <hr>
-                        <?php echo $msg; ?>
-                        <form action="" method="post">
-                            <input type="email" class="email" name="email" placeholder="Enter Your Email" required>
-                            <input type="password" class="password" name="password" placeholder="Enter Your Password" style="margin-bottom: 15px;" required>
-                            <input type="text" style="background-color: yellow; text-align:center; text-decoration: line-through; letter-spacing:5px; font-size:25px;" class="captcha" name="captcha" value="<?php echo substr(uniqid(), 5); ?>">
-                            <input type="text" name="confirmcaptcha" placeholder="Enter The Captcha Above" value="">
-                            <button name="submit" name="submit" class="btn" type="submit">Login</button>
-                        </form>
-                        <div class="social-icons">
-                            <p>Don't have an account? <a href="register.php">Sign Up</a>.</p>
-                        </div>
+            <div class="main-mockup">
+                <div class="content-wthree">
+                    <h2>Login</h2>
+                    <hr>
+                    <?php echo $msg; ?>
+                    <form action="" method="post">
+                        <input type="email" class="email" name="email" placeholder="Enter Your Email" required>
+                        <input type="password" class="password" name="password" placeholder="Enter Your Password" style="margin-bottom: 15px;" required>
+                        <input type="text" style="background-color: yellow; text-align:center; text-decoration: line-through; letter-spacing:5px; font-size:25px;" class="captcha" name="captcha" value="<?php echo substr(uniqid(), 5); ?>">
+                        <input type="text" name="confirmcaptcha" placeholder="Enter The Captcha Above" value="">
+                        <button name="submit" name="submit" class="btn" type="submit">Login</button>
+                    </form>
+                    <div class="social-icons">
+                        <p>Don't have an account? <a href="register.php">Sign Up</a>.</p>
                     </div>
                 </div>
             </div>

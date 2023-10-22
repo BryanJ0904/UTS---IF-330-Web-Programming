@@ -48,28 +48,21 @@
 <body>
     <section class="w3l-mockup-form">
         <div class="container">
-            <div class="workinghny-form-grid">
-                <div class="main-mockup">
-                    <div class="w3l_form align-self">
-                        <div class="left_grid_info">
-                            <img src="images/food2.png" alt="">
-                        </div>
-                    </div>
-                    <div class="content-wthree">
-                        <h2>Sign Up</h2>
-                        <hr>
-                        <?php echo $msg; ?>
-                        <form action="" method="post">
-                            <input type="text" class="name" name="fname" placeholder="Enter Your First Name" value="<?php if (isset($_POST['submit'])) { echo $fname; } ?>" required>
-                            <input type="text" class="name" name="lname" placeholder="Enter Your Last Name" value="<?php if (isset($_POST['submit'])) { echo $lname; } ?>" required>
-                            <input type="email" class="email" name="email" placeholder="Enter Your Email" value="<?php if (isset($_POST['submit'])) { echo $email; } ?>" required>
-                            <input type="password" class="password" name="password" placeholder="Enter Your Password" required>
-                            <input type="password" class="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                            <button name="submit" class="btn" type="submit">Sign Up</button>
-                        </form>
-                        <div class="social-icons">
-                            <p>Already have an account? <a href="login.php">Login</a>.</p>
-                        </div>
+            <div class="main-mockup">
+                <div class="content-wthree">
+                    <h2>Sign Up</h2>
+                    <hr>
+                    <?php echo $msg; ?>
+                    <form action="" method="post">
+                        <input type="text" class="name" name="fname" placeholder="Enter Your First Name" value="<?php if (isset($_POST['submit'])) { echo $fname; } ?>" required>
+                        <input type="text" class="name" name="lname" placeholder="Enter Your Last Name" value="<?php if (isset($_POST['submit'])) { echo $lname; } ?>" required>
+                        <input type="email" class="email" name="email" placeholder="Enter Your Email" value="<?php if (isset($_POST['submit'])) { echo $email; } ?>" required>
+                        <input type="password" class="password" name="password" placeholder="Enter Your Password" required>
+                        <input type="password" class="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                        <button name="submit" class="btn" type="submit">Sign Up</button>
+                    </form>
+                    <div class="social-icons">
+                        <p>Already have an account? <a href="login.php">Login</a>.</p>
                     </div>
                 </div>
             </div>
