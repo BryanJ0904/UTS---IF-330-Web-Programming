@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2023 at 01:35 PM
+-- Generation Time: Oct 22, 2023 at 01:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,21 +30,47 @@ SET time_zone = "+00:00";
 CREATE TABLE `todolist` (
   `task` varchar(50) NOT NULL,
   `done` tinyint(1) NOT NULL,
-  `progress` varchar(15) NOT NULL
+  `progress` varchar(15) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `due_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `todolist`
 --
 
-INSERT INTO `todolist` (`task`, `done`, `progress`) VALUES
-('Do home chores', 1, 'Done'),
-('Do homework', 0, 'In progress'),
-('Eat pizza with family', 0, 'Waiting on'),
-('Have fun', 0, 'Not yet started'),
-('Have mental breakdown', 1, 'Done'),
-('Sleep and cry for days', 0, 'Waiting on'),
-('Watch Netflix', 0, 'Waiting on');
+INSERT INTO `todolist` (`task`, `done`, `progress`, `user_id`, `due_date`) VALUES
+('Do home chores', 1, 'Done', 1, '2023-10-31'),
+('Do homework', 0, 'In progress', 1, '2023-10-31'),
+('Eat pizza with family', 0, 'Waiting on', 1, '2023-10-31'),
+('Have fun', 0, 'Not yet started', 1, '2023-10-23'),
+('Have mental breakdown', 1, 'Done', 1, '2023-10-31'),
+('Only a test', 0, 'In progress', 1, '2023-10-24'),
+('Sleep and cry for days', 0, 'Waiting on', 1, '2023-10-31'),
+('Traktir satu kelas', 0, 'Not yet started', 2, '2023-10-31'),
+('Watch Netflix', 0, 'Waiting on', 1, '2023-10-31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`) VALUES
+(1, 'bryan', 'ngetes', 'bryan@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(2, 'mark', 'metew', 'tetew@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Indexes for dumped tables
@@ -55,6 +81,22 @@ INSERT INTO `todolist` (`task`, `done`, `progress`) VALUES
 --
 ALTER TABLE `todolist`
   ADD PRIMARY KEY (`task`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
