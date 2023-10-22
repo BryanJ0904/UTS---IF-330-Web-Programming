@@ -19,6 +19,7 @@
     <div class="container d-flex flex-column justify-content-center" style="height: 100vh">
     <?php
         if(isset($_COOKIE['user_id'], $_COOKIE['user_name'])){
+            date_default_timezone_set('Asia/Jakarta');
             $current_hour = date('H');
             if ($current_hour >= 5 && $current_hour < 12) {
                 $greeting = 'Good morning';

@@ -10,7 +10,7 @@ if (isset($_GET['editid'])) {
                 <div class='modal-content'>
                     <div class='modal-header'>
                         <h5 class='modal-title' id='exampleModalLabel'>Edit task</h5>
-                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <button class='close' data-dismiss='modal' aria-label='close' onclick='toggleModals()'>
                             <span aria-hidden='true'>&times;</span>
                         </button>
                     </div>
@@ -18,6 +18,8 @@ if (isset($_GET['editid'])) {
                         <form action='list.php?action=edit' method='POST'>
                             <input type='hidden' name='id' value='" . $_GET['editid'] . "'/><br />
                             <input type='text' name='task' class='form-control' value='" . htmlspecialchars($hasil["task"], ENT_QUOTES, 'UTF-8') . "' required/><br /> 
+                            <label>Select the due date:</label><br />
+                            <input type='date' name='due_date' class='form-control' value='" . $hasil['due_date'] . "' required/><br />
                             <label>What is the current progress?</label><br />
                             <input type='radio' name='progress' value='Not yet started'" . ($hasil["progress"] == "Not yet started" ? 'checked' : '') . "/>Not Started<br />
                             <input type='radio' name='progress' value='Waiting on'" . ($hasil["progress"] == "Waiting on" ? 'checked' : '') . "/>Waiting On<br />

@@ -14,6 +14,8 @@ if($_GET["action"] == "add"){
                         <form action='list.php?action=view' method='POST'>
                             <input type='hidden' name='id' value='" . $_COOKIE['user_id'] . "'/>
                             <input type='text' name='task' class='form-control' placeholder='What is on your mind?' required/><br />
+                            <label>Select the due date:</label><br />
+                            <input type='date' name='due_date' class='form-control' placeholder='What is the due date?' required/><br />
                             <label>What is the current status?</label><br />
                             <input type='radio' name='progress' value='Not yet started' required/>Not Started<br />
                             <input type='radio' name='progress' value='Waiting on' required/>Waiting On<br />

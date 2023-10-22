@@ -25,6 +25,31 @@
         function toggleModals() {
             $('#exampleModal').modal('hide');
         }
+        function updateCountdown(targetDate, index, done) {
+            var now = new Date();
+            var timeLeft = targetDate - now;
+
+            if (timeLeft <= 0) {
+                if(!done){
+                    document.getElementById('countdown' + index).innerHTML = "Overdue";
+                    document.getElementById('countdown' + index).style.color = "red";
+                }
+                else{
+                    document.getElementById('countdown' + index).innerHTML = "Done!";
+                    document.getElementById('countdown' + index).style.color = "green";
+                }
+            } else {
+                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown' + index).innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                if(days < 1){
+                    document.getElementById('countdown' + index).style.color = "orange";
+                }
+            }
+        }
     </script>
     <title>Task Tracker</title>
 </head>
@@ -60,6 +85,7 @@
                     <th scope="col">Task</th>
                     <th scope="col">Done</th>
                     <th scope="col">Progress</th>
+                    <th scope="col">Due Date</th>
                     <?php if ($_GET['action'] == 'edit'): ?>
                         <th scope="col" class="col-1"></th>
                     <?php endif; ?>
@@ -72,6 +98,8 @@
 
             echo "<tbody>";
             while($hasil = mysqli_fetch_array($query)){
+                $date = $hasil['due_date'];
+
                 echo "<tr>";
                 echo "<td>" . $hasil['task'] . "</td>";
                 echo "<td>" . "<input type='checkbox' disabled " . ($hasil['done'] == 1 ? 'checked' : '') . "></td>";
@@ -82,6 +110,15 @@
                         )
                     )
                 ). ";'>" . $hasil['progress'] . "</span></td>";
+                echo "<td id='countdown" . $index . "'></td>";
+                echo "<script>
+                        var targetDate" . $index . " = new Date('" . $date . "').getTime();
+                        updateCountdown(targetDate" . $index . ", " . $index . ", " . $hasil['done'] . ");
+        
+                        setInterval(function() {
+                            updateCountdown(targetDate" . $index . ", " . $index . ", " . $hasil['done'] . ");
+                        }, 1000);
+                    </script>";
                 if($_GET["action"] == "edit"){
                     $baseUrl = dirname($_SERVER['SCRIPT_NAME']);
                     $url = $baseUrl . '/' . "list.php?action=edit&editid=" . urlencode($index);
