@@ -145,12 +145,36 @@
     </div>
     <script>
         $(document).ready(function(){
-            $.fn.dataTable.ext.order['custom-order'] = function(settings, col) {
+            $.fn.dataTable.ext.order['custom-order1'] = function(settings, col) {
                 return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
                     var customOrder = ['Not yet started', 'Waiting on', 'In progress', 'Done'];
                     return customOrder.indexOf(td.innerText);
                 });
             };
+            
+            $.fn.dataTable.ext.order['custom-order2'] = function (settings, col) {
+                return this.api().column(col, { order: 'index' }).nodes().map(function (td, i) {
+                    var value = td.innerText.toLowerCase();
+
+                    var specialCases = {
+                        'Overdue': -1,
+                        'Done!': Infinity,
+                    };
+
+                    if (specialCases.hasOwnProperty(value)) {
+                        return specialCases[value];
+                    } else {
+                        var regex = /(\d+)d/;
+                        var match = value.match(regex);
+
+                        if (match) {
+                            return parseInt(match[1]);
+                        }
+                    }
+                    return 0;
+                });
+            };
+
             $('#table').DataTable({
                 order: [[2, 'asc']],
                 columnDefs: [
@@ -158,7 +182,10 @@
                         targets: [0,1], orderable: false
                     },
                     {
-                        targets: [2], type: 'string', orderDataType: 'custom-order'
+                        targets: [2], type: 'string', orderDataType: 'custom-order1'
+                    },
+                    {
+                        targets: [3], type: 'numeric', orderDataType: 'custom-order2'
                     }
                 ]
             });

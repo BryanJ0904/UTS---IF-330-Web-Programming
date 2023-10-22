@@ -16,8 +16,11 @@
 
 <body class="body">
     <?php require 'navbar.php'; ?>
-    <div class="container d-flex flex-column justify-content-center" style="height: 100vh">
+    <div class="container d-flex flex-column" style="height: 100vh">
     <?php
+        if(isset($_GET['error'])){
+            echo "<div class='mt-3 alert alert-danger'>Please register/login first!</div>";
+        }
         if(isset($_COOKIE['user_id'], $_COOKIE['user_name'])){
             date_default_timezone_set('Asia/Jakarta');
             $current_hour = date('H');
@@ -33,9 +36,6 @@
             echo "<h2 class='user text-center'>" . $greeting . " " . $_COOKIE['user_name'] . "!</h2>";
         }else{
             echo "<h2 class='user text-center'>Welcome Guest!</h2>" ;
-        }
-        if(isset($_GET['error'])){
-            echo "<div class='alert alert-danger'>Please register/login first!</div>";
         }
     ?>
         <div class="my-5">
