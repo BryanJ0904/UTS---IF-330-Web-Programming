@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['editid'])) {
-    $selection = "SELECT * FROM todolist LIMIT 1 OFFSET " . $_GET['editid'];
+    $selection = "SELECT * FROM todolist WHERE user_id = '" . $_COOKIE['user_id']. "' LIMIT 1 OFFSET " . $_GET['editid'];
     $selected = mysqli_query($db, $selection);
 
     while($hasil = mysqli_fetch_array($selected)){
