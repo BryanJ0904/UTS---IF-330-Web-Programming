@@ -56,14 +56,32 @@
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
+            width: 100%
+        }
+
+        .add-to-cart button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
         }
 
         .add-to-cart input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        .add-to-cart button:hover {
+            background-color: #0056b3;
+        }
+
+        .bg_color{
+            background: #d8fcf4;
+        }
     </style>
 </head>
-<body>
+<body class="bg_color">
     <div class="menu-card">
         <?php
         $con = mysqli_connect("localhost", "root", "", "webprog");
@@ -93,6 +111,7 @@
                         <input type="hidden" name="menu_price" value="<?php echo $menuData['harga']; ?>">
                         <input type="submit" value="Add to Cart">
                     </form>
+                    <br><a href="category.php"><button>Back</button></a>
                 </div>
         <?php
             } else {

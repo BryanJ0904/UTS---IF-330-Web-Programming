@@ -91,7 +91,7 @@ if (isset($_GET['delete_id'])) {
                     <select name="txtCategory" id="txtCategory">
                         <option value="appetizer">Appetizer</option>
                         <option value="breakfast">Breakfast</option>
-                        <option value="luch">Lunch</option>
+                        <option value="lunch">Lunch</option>
                         <option value="dinner">Dinner</option>
                         <option value="dessert">Dessert</option>
                         <option value="drinks">Drinks</option>

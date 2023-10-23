@@ -28,7 +28,11 @@
             if (mysqli_num_rows($result) === 1) {
                 $row = mysqli_fetch_assoc($result);
                 $user_id = $row['id'];
+                $first_name = $row['fname'];
+                $last_name = $row['lname'];
                 setcookie('user_id', $user_id, time() + 3600, '/');
+                setcookie('first_name', $first_name, time() + 3600, '/');
+                setcookie('last_name', $last_name, time() + 3600, '/');
                 header("Location: category.php");
             } else {
                 $msg = "<div class='alert alert-danger'>Email or password does not match.</div>";
