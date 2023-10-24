@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 22, 2023 at 04:32 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:3306
+-- Generation Time: Oct 24, 2023 at 10:51 AM
+-- Server version: 10.5.20-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webproglab`
+-- Database: `id21447332_webproglab`
 --
 
 -- --------------------------------------------------------
@@ -45,6 +45,8 @@ INSERT INTO `todolist` (`task`, `done`, `progress`, `user_id`, `due_date`) VALUE
 ('Eat pizza with family', 0, 'Waiting on', 1, '2023-11-02'),
 ('Have fun', 0, 'Not yet started', 1, '2023-10-12'),
 ('Sleep and cry for days', 0, 'Waiting on', 1, '2023-10-26'),
+('tes', 1, 'Done', 3, '2023-10-25'),
+('Tidur', 0, 'Waiting on', 4, '2023-10-25'),
 ('Traktir satu kelas', 0, 'Not yet started', 2, '2023-10-31'),
 ('Watch Netflix', 0, 'Waiting on', 1, '2023-10-26');
 
@@ -68,7 +70,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`) VALUES
 (1, 'bryan', 'ngetes', 'bryan@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(2, 'mark', 'metew', 'tetew@gmail.com', '202cb962ac59075b964b07152d234b70');
+(2, 'mark', 'metew', 'tetew@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(3, 'Met', 'Tes', 'met@gmail.com', 'b8b4b727d6f5d1b61fff7be687f7970f'),
+(4, 'Mark', 'By', 'mark.vincent@student.umn.ac.ida', 'ea82410c7a9991816b5eeeebe195e20a');
 
 --
 -- Indexes for dumped tables
@@ -94,7 +98,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
