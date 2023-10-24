@@ -48,7 +48,8 @@ if (isset($_POST['edit_id'])) {
     $newNama = $_POST['new_nama'];
     $newHarga = $_POST['new_harga'];
     $newDeskripsi = $_POST['new_deskripsi'];
-    $newImg = $_POST['new_img'];
+    $newImg = "./database/images/" . $_FILES['new_img']['name'];
+    move_uploaded_file($_FILES['new_img']['tmp_name'], $newImg);
     $newCategory =$_POST['new_category'];
 
     $updateQuery = "UPDATE resto SET nama = '$newNama', harga = '$newHarga', deskripsi = '$newDeskripsi', img = '$newImg', category='$newCategory' WHERE id = $editId";
@@ -164,7 +165,7 @@ if (isset($_GET['delete_id'])) {
                             $editData = mysqli_fetch_assoc($editResult);
                         
                             echo "<h3>Edit Restaurant Entry</h3>";
-                            echo "<form action='admin.php' method='post'>";
+                            echo "<form action='admin.php' method='post' enctype='multipart/form-data'>";
                             echo "<input type='hidden' name='edit_id' value='" . $editData['id'] . "'>";
                             echo "Nama: <input type='text' name='new_nama' value='" . $editData['nama'] . "'><br>";
                             echo "Harga: <input type='text' name='new_harga' value='" . $editData['harga'] . "'><br>";
@@ -193,6 +194,6 @@ if (isset($_GET['delete_id'])) {
 </html>
 <?php 
 }else{
-    echo "Access Denied";
+    echo "Access Denied. Please login as admin to access.";
 }
 ?>

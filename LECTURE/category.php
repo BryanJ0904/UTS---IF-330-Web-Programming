@@ -85,7 +85,7 @@
         }
 
         if(isset($_GET['add'])){
-            echo "<div class='text-center alert alert-danger'>Added to cart!</div>";
+            echo "<div class='text-center alert alert-primary'>Added to cart!</div>";
         }
 ?>
 
