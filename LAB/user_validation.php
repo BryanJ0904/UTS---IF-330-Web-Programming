@@ -1,8 +1,6 @@
 <?php
 if (!isset($_COOKIE['user_id'])){
-    header("Location: homepage.php?error");
+    echo "<script>window.location = 'index.php?error';</script>";
     exit();
-}else{
-    unset($_SESSION['error']);
 }
 ?>

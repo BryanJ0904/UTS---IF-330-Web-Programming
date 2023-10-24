@@ -1,6 +1,6 @@
 <?php
     if (isset($_COOKIE['user_id'])) {
-        header("Location: ../homepage.php");
+        header("Location: ../index.php");
         die();
     }
 
@@ -32,7 +32,7 @@
                 setcookie('user_id', $user_id, time() + 3600, '/');
                 setcookie('user_name', $user_name, time() + 3600, '/');
                 setcookie('last_name', $last_name, time() + 3600, '/');
-                header("Location: ../homepage.php");
+                header("Location: ../index.php");
                 exit;
             } else {
                 $msg = "<div class='alert alert-danger'>Email or password does not match.</div>";

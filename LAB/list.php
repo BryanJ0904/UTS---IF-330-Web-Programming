@@ -19,8 +19,7 @@
         function toggleSwitch(switchElement) {
             const isChecked = switchElement.checked;
             let action = isChecked ? 'edit' : 'view';
-            let baseUrl = "<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>";
-            window.location.href = baseUrl + '/list.php?action=' + action;
+            window.location.href = '/list.php?action=' + action;
         }
         function toggleModals() {
             $('#exampleModal').modal('hide');
@@ -64,7 +63,7 @@
 
     ?>
     <div class="mt-5 container d-flex flex-column justify-content-center">
-        <a href="homepage.php" style="color: black; font-family: 'Kaushan Script', cursive; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./assets/back.png" style="margin-right: 10px;"/>Back to Home</a>
+        <a href="index.php" style="color: black; font-family: 'Kaushan Script', cursive; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./assets/back.png" style="margin-right: 10px;"/>Back to Home</a>
         <?php echo "<h1 class='user text-center'>" . $_COOKIE['user_name'] . "'s </h1>" ?>
         <h1 class="title text-center">To Do List</h1><br />
         <div class="d-flex justify-content-between align-self-center align-items-center">
@@ -120,8 +119,7 @@
                         }, 1000);
                     </script>";
                 if($_GET["action"] == "edit"){
-                    $baseUrl = dirname($_SERVER['SCRIPT_NAME']);
-                    $url = $baseUrl . '/' . "list.php?action=edit&editid=" . urlencode($index);
+                    $url = "list.php?action=edit&editid=" . urlencode($index);
                     echo "<td>
                             <div class='d-flex'>
                                 <a href='$url'>
