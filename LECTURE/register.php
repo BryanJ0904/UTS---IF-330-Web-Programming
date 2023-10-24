@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_SESSION['SESSION_EMAIL'])) {
-        header("Location: welcome.php");
+        header("Location: index.php");
         die();
     }
 
@@ -67,9 +67,11 @@
                             <input type="email" class="email" name="email" placeholder="Enter Your Email" value="<?php if (isset($_POST['submit'])) { echo $email; } ?>" required>
                             <input type="password" class="password" name="password" placeholder="Enter Your Password" required>
                             <input type="password" class="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                            <input type="date" class="date" name="lahir" placeholder="Enter Your Birth Date">
-                            <input type="radio" id="male" name="gender" value="Male" required/>Male
-                            <input type="radio" id="female" name="gender" value="Female" required/>Female
+                            <p>Birth Date:</p><input type="date" class="date" name="lahir" placeholder="Enter Your Birth Date">
+                            <div class="d-flex">
+                                Male<input type="radio" id="male" name="gender" value="Male" >
+                                Female<input type="radio" id="female" name="gender" value="Female">
+                            </div>
                             <button name="submit" class="btn" type="submit">Sign Up</button>
                         </form>
                         <div class="social-icons">

@@ -16,13 +16,13 @@
         <div>
             <div class="nav-links">
                 <?php 
-                    echo "<a class='home-button' href='homepage.php'><img src='./images/home.png' style='width: 25px; height: 25px' /></a>";
+                    echo "<a class='home-button' href='index.php'><img src='./images/home.png' style='width: 25px; height: 25px' /></a>";
                     if(isset($_COOKIE['user_id'])){
                         echo "<a class='cart-button' href='cart.php'><img src='./images/cart.png' style='width: 25px; height: 25px' /><span class='ml-2'>Keranjang</span></a>";
                         echo "<a class='logout-button' href='logout.php'>Keluar</a>";
                     }else{
-                        echo "<a class='login-button' href='login.php'><span class='icon-add'></span>Masuk</a>";
-                        echo "<a class='join-button' href='.register.php'>Registrasi</a>";
+                        echo "<a class='login-button' href='login.php'><span class='icon-add'></span>Login</a>";
+                        echo "<a class='join-button' href='register.php'>Register</a>";
                     }
                     ?>
             </div>
