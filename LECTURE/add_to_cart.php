@@ -2,7 +2,7 @@
 <html>
 <body>
             <?php
-            session_start();
+            ob_start();
             include 'config.php';
             
             if (isset($_POST['menu_id']) && isset($_POST['menu_name']) && isset($_POST['menu_price'])) {
@@ -22,7 +22,7 @@
                     $insertQuery = "INSERT INTO cart (menu_id, menu_name, user_id, menu_price, quantity) VALUES ($menuId, '$menuName', $userId, $menuPrice, 1)";
                     mysqli_query($conn, $insertQuery);
                 }
-                header('Location: cart.php');
+                echo "<script>window.location = 'category.php?add';</script>";
             }
         ?>
 </body>

@@ -86,6 +86,7 @@
 <body class="bg_image">
     <div class="menu-card">
         <?php
+        ob_start();
         include 'config.php';
 
         if(isset($_COOKIE['user_id'])){
@@ -124,7 +125,7 @@
             echo "Parameter ID tidak ditemukan.";
         }
         }else{
-            header("Location: category.php?error");
+            echo "<script>window.location = 'category.php?error';</script>";
             exit();
         }
         ?>

@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>";
     }
     if(isset($_POST['removeAllItem'])) {
-        $sql = "DELETE FROM `car` WHERE `user_id`='$userId'";   
+        $sql = "DELETE FROM `cart` WHERE `user_id`='$userId'";   
         $result = mysqli_query($conn, $sql);
         echo "<script>alert('Removed All');
                 window.location.href = '../cart.php';

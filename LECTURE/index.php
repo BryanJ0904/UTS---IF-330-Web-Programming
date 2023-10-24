@@ -56,6 +56,75 @@
       </div>
     </div>
   </section>
+  <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Our Team</h2>
+        </div>
+
+        <div class="row" style="padding-left: 150px; padding-right:150px;">
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="./images/bj.png" class="img-fluid" alt="" style="height: 198px;width: 198px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Bryan Jonathan</h4>
+                </div>
+                <div class="social">
+                  <a href="https://github.com/BryanJ0904" target="_blank"><i class="fab fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/bryan-jonathan-b1193524b/" target="_blank"><i class="icofont-linkedin" target="_blank"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="./images/mark.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Mark Vincent E. B.</h4>
+                </div>
+                <div class="social">
+                  <a href="https://github.com/Mark-Vincent23" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="./images/met.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Matthew Nikolaus</h4>
+                </div>
+                <div class="social">
+                  <a href="https://github.com/Matetew" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="./images/rahmat.jpg" class="img-fluid" alt="" style="height: 198px;width: 198px;">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Rahmat Kurniawan</h4>
+                </div>
+                <div class="social">
+                  <a href="https://github.com/rxx-zip" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
