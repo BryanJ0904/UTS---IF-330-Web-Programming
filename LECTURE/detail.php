@@ -56,22 +56,43 @@
             border-radius: 5px;
             padding: 10px 20px;
             cursor: pointer;
+            width: 100%
+        }
+
+        .add-to-cart button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
         }
 
         .add-to-cart input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        .add-to-cart button:hover {
+            background-color: #0056b3;
+        }
+
+        .bg_image{
+            background-image: url('./images/background.jpg');
+            background-size: 100% 100vh;
+        }
+
     </style>
 </head>
-<body>
+<body class="bg_image">
     <div class="menu-card">
         <?php
-        $con = mysqli_connect("localhost", "root", "", "webprog");
+        include 'config.php';
 
+        if(isset($_COOKIE['user_id'])){
         if (isset($_GET['id'])) {
             $menuId = $_GET['id'];
             $detailQuery = "SELECT * FROM resto WHERE id = $menuId";
-            $detailResult = mysqli_query($con, $detailQuery);
+            $detailResult = mysqli_query($conn, $detailQuery);
             $menuData = mysqli_fetch_assoc($detailResult);
 
             if ($menuData) {
@@ -93,6 +114,7 @@
                         <input type="hidden" name="menu_price" value="<?php echo $menuData['harga']; ?>">
                         <input type="submit" value="Add to Cart">
                     </form>
+                    <br><a href="category.php"><button>Back</button></a>
                 </div>
         <?php
             } else {
@@ -100,6 +122,10 @@
             }
         } else {
             echo "Parameter ID tidak ditemukan.";
+        }
+        }else{
+            header("Location: category.php?error");
+            exit();
         }
         ?>
     </div>

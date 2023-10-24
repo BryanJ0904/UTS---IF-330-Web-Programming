@@ -9,16 +9,31 @@ if(isset($_GET['category'])){
 
 <!DOCTYPE html>
 <html lang="en">
+<?php include 'navbar.php'; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Makanan/Minuman</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        .bg_image{
+            background-image: url('./images/background.jpg');
+            background-size: 100% 100vh;
+        }
 
+        #back-button{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg_image">
     <div class="container mt-4">
+        <span class="p-3 mt-3" style="background-color: white">
+            <a href="category.php" style="color: black; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./images/back.png" style="margin-right: 10px;"/>Kembali</a>
+        </span>
         <h2 class="text-center"> Restoran IF330</h2>
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -33,25 +48,27 @@ if(isset($_GET['category'])){
                     <tbody>
 
                     <?php
-                    while ($hasil = mysqli_fetch_array($query)) {
-                        echo "<tr>";
-                        echo "<td><a href='detail.php?id=" . $hasil['id'] . "'><img src='" . $hasil['img'] . "' width='100' height='100'></a></td>";
-                        echo "<td><a href='detail.php?id=" . $hasil['id'] . "'>" . $hasil['nama'] . "</a></td>";
-                        echo "<td><p class='d-inline-flex gap-1'>
-                        <button class='btn btn-primary' type='button' data-bs-toggle='collapse' data-bs-target='#collapseExample' aria-expanded='false' aria-controls='collapseExample'>
-                          Info
-                        </button>
-                      </p>
-                      <div class='collapse' id='collapseExample'>
-                        <div class='card card-body'> 
-                        Deskripsi: " . $hasil['deskripsi'] . "<br>
-                        Harga: Rp" . $hasil['harga'] . "<br>
-                        </div>
-                      </div></td>";
-                        echo "</tr>";
-                    }
-                    ?>
-
+$index = 0;
+while ($hasil = mysqli_fetch_array($query)) {
+    $index++;
+    echo "<tr>";
+    echo "<td><a href='detail.php?id=" . $hasil['id'] . "'><img src='" . $hasil['img'] . "' width='100' height='100'></a></td>";
+    echo "<td><a href='detail.php?id=" . $hasil['id'] . "'>" . $hasil['nama'] . "</a></td>";
+    echo "<td><p class='d-inline-flex gap-1'>
+        <button class='btn btn-primary' type='button' data-bs-toggle='collapse' data-bs-target='#collapseExample$index' aria-expanded='false' aria-controls='collapseExample$index'>
+            Info
+        </button>
+    </p>
+    <div class='collapse' id='collapseExample$index'>
+        <div class='card card-body'> 
+        Deskripsi: " . $hasil['deskripsi'] . "<br>
+        Harga: Rp" . $hasil['harga'] . "<br>
+        <br> *klik gambar atau nama untuk pemesanan
+        </div>
+    </div></td>";
+    echo "</tr>";
+}
+?>
                     </tbody>
                 </table>
             </div>
