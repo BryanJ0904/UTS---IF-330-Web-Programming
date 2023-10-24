@@ -76,20 +76,23 @@
             background-color: #0056b3;
         }
 
-        .bg_color{
-            background: #d8fcf4;
+        .bg_image{
+            background-image: url('./images/background.jpg');
+            background-size: 100% 100vh;
         }
+
     </style>
 </head>
-<body class="bg_color">
+<body class="bg_image">
     <div class="menu-card">
         <?php
-        $con = mysqli_connect("localhost", "root", "", "webprog");
+        include 'config.php';
 
+        if(isset($_COOKIE['user_id'])){
         if (isset($_GET['id'])) {
             $menuId = $_GET['id'];
             $detailQuery = "SELECT * FROM resto WHERE id = $menuId";
-            $detailResult = mysqli_query($con, $detailQuery);
+            $detailResult = mysqli_query($conn, $detailQuery);
             $menuData = mysqli_fetch_assoc($detailResult);
 
             if ($menuData) {
@@ -119,6 +122,10 @@
             }
         } else {
             echo "Parameter ID tidak ditemukan.";
+        }
+        }else{
+            header("Location: category.php?error");
+            exit();
         }
         ?>
     </div>

@@ -32,9 +32,6 @@
   text-decoration: none;
   margin: 0 0.7vw;
 }
-.nav-links a:hover {
-  color: #61DAFB;
-}
 .nav-links{
   position: relative;
 }
@@ -48,22 +45,47 @@
   transition: all ease-in-out 250ms;
   margin: 0 0 0 10%;
 }
-
-/*Styling Buttons*/
-.login-button{
-  background-color: transparent;
+.cart-button{
+  background-color: #ABA4A3;
   color: #131418;
-  border: 1.5px solid #f2f5f7;
+  border: 1.5px solid #ABA4A3;
   border-radius: 2em;
   padding: 0.6rem 0.8rem;
   font-size: 1rem;
   cursor: pointer;
-
+}
+.cart-button:hover {
+  background-color: #C7BEBD;
+  color: #131418;
+  border: 1.5px solid #C7BEBD;
+  transition: all ease-in-out 350ms;
+}
+.login-button{
+  background-color: #89ba16;
+  color: white;
+  border: 1.5px solid #89ba16;
+  border-radius: 2em;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 .login-button:hover {
+  color: white;
+  background-color: #90c317;
+  transition: all ease-in-out 350ms;
+}
+.logout-button{
+  background-color: #FF5733;
   color: #131418;
-  background-color: #f2f5f7;
-  border:1.5px solid #f2f5f7;
+  border: 1.5px solid #FF5733;
+  border-radius: 2em;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.logout-button:hover {
+  color: #131418;
+  background-color: #F5785D;
   transition: all ease-in-out 350ms;
 }
 .join-button{
@@ -76,9 +98,24 @@
   cursor: pointer;
 }
 .join-button:hover {
-  color: #f2f5f7;
-  background-color: transparent;
-  border:1.5px solid #f2f5f7;
+  color: #131418;
+  background-color: #8EE7FF;
+  transition: all ease-in-out 350ms;
+}
+.admin-button{
+  background-color: #ABA4A3;
+  color: #131418;
+  border: 1.5px solid #ABA4A3;
+  text-decoration: none;
+  border-radius: 2em;
+  padding: 0.3rem 0.4rem;
+  font-size: 0.5rem;
+  cursor: pointer;
+}
+.admin-button:hover {
+  background-color: #C7BEBD;
+  color: #131418;
+  border: 0.5px solid #C7BEBD;
   transition: all ease-in-out 350ms;
 }
 

@@ -10,6 +10,11 @@
         .table img {
             max-width: 100px;
         }
+
+        #back-button{
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -21,19 +26,21 @@
     <input type="submit" value='ADD'> -->
 
 <?php
-$con = mysqli_connect("localhost", "root", "", "webprog");
-
-if (isset($_POST['txtNama'])) {
-    $insertQuery = "INSERT INTO resto (nama, harga, deskripsi, img, category) 
+include 'config.php';
+if($_COOKIE['user_id']== 1){
+if (isset($_POST['txtNama'], $_FILES['txtImg']['name'])) {
+    $imgUploadDirectory = "./database/images/" . $_FILES['txtImg']['name'] ;
+    move_uploaded_file($_FILES['txtImg']['tmp_name'], $imgUploadDirectory);
+    $insertQuery = "INSERT INTO resto (nama, harga, deskripsi, img, category)
     VALUES
-    ('".$_POST['txtNama']."', '".$_POST['txtHarga']."', '".$_POST['txtDeskripsi']."', '".$_POST['txtImg']."', '".$_POST['txtCategory']."') ";
-    $query2 = mysqli_query($con, $insertQuery);
+    ('".$_POST['txtNama']."', '".$_POST['txtHarga']."', '".$_POST['txtDeskripsi']."', '".$imgUploadDirectory."', '".$_POST['txtCategory']."') ";
+    $query2 = mysqli_query($conn, $insertQuery);
 }
 
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM resto WHERE id = $deleteId";
-    $query3 = mysqli_query($con, $deleteQuery);
+    $query3 = mysqli_query($conn, $deleteQuery);
 }
 
 if (isset($_POST['edit_id'])) {
@@ -45,31 +52,35 @@ if (isset($_POST['edit_id'])) {
     $newCategory =$_POST['new_category'];
 
     $updateQuery = "UPDATE resto SET nama = '$newNama', harga = '$newHarga', deskripsi = '$newDeskripsi', img = '$newImg', category='$newCategory' WHERE id = $editId";
-    $query4 = mysqli_query($con, $updateQuery);
+    $query4 = mysqli_query($conn, $updateQuery);
 }
 
 $q = "SELECT * FROM resto";
-$query = mysqli_query($con, $q);
+$query = mysqli_query($conn, $q);
 
 
 
 $resetQuery = "ALTER TABLE resto AUTO_INCREMENT = 1";
-$queryReset = mysqli_query($con, $resetQuery);
+$queryReset = mysqli_query($conn, $resetQuery);
 
 if (isset($_GET['delete_id'])) {
     $deleteId = $_GET['delete_id'];
     $deleteQuery = "DELETE FROM resto WHERE id = $deleteId";
-    $query3 = mysqli_query($con, $deleteQuery);
+    $query3 = mysqli_query($conn, $deleteQuery);
 
     $resetQuery = "ALTER TABLE resto AUTO_INCREMENT = 1";
-    $queryReset = mysqli_query($con, $resetQuery);
+    $queryReset = mysqli_query($conn, $resetQuery);
 }
 
 ?>
 <div class="container mt-5">
+    <span class="p-3 mt-3">
+        <a href="category.php" style="color: black; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./images/back.png" style="margin-right: 10px;"/>Kembali</a>
+    </span>
+    <br /><br />
     <div class="row">
         <div class="col-md-6">
-            <form action="admin.php" method="post">
+            <form action="admin.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="txtNama">Nama:</label>
                     <input type="text" class="form-control" name="txtNama" id="txtNama">
@@ -149,7 +160,7 @@ if (isset($_GET['delete_id'])) {
                         if (isset($_GET['edit_id'])) {
                             $editId = $_GET['edit_id'];
                             $editQuery = "SELECT * FROM resto WHERE id = $editId";
-                            $editResult = mysqli_query($con, $editQuery);
+                            $editResult = mysqli_query($conn, $editQuery);
                             $editData = mysqli_fetch_assoc($editResult);
                         
                             echo "<h3>Edit Restaurant Entry</h3>";
@@ -180,4 +191,8 @@ if (isset($_GET['delete_id'])) {
 </form>
 </body>
 </html>
-
+<?php 
+}else{
+    echo "Access Denied";
+}
+?>

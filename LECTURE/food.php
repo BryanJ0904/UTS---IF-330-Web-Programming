@@ -9,30 +9,7 @@ if(isset($_GET['category'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="navbar.css">
-    <header>
-    <div class="nav">
-        <div class="logo">
-            <?php 
-                if(isset($_COOKIE['user_id'])){ 
-                    echo "<img src='./assets/user.png' alt='Logo Image'>" . $_COOKIE['first_name'] . " " . $_COOKIE['last_name']; 
-                }?>
-        </div>
-        <div>
-            <div class="nav-links">
-                <?php 
-                    if(isset($_COOKIE['user_id'])){ 
-                        echo "<a class='login-button' href='logout.php'>Log Out</a>";
-                    }else{
-                        echo "<a class='login-button' href='login.php'>Login</a>
-                            <a class='join-button' href='.register.php'>Register</a>";
-                    }
-                    ?>
-            </div>
-        </div>
-    </div>
-    </header>
-    <hr />
+<?php include 'navbar.php'; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,13 +18,22 @@ if(isset($_GET['category'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     <style>
-        .bg_color{
-            background: #d8fcf4;
+        .bg_image{
+            background-image: url('./images/background.jpg');
+            background-size: 100% 100vh;
+        }
+
+        #back-button{
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
-<body class="bg_color">
+<body class="bg_image">
     <div class="container mt-4">
+        <span class="p-3 mt-3" style="background-color: white">
+            <a href="category.php" style="color: black; font-size: 24px; text-decoration: none;"><img class="img-fluid" id="back-button" src="./images/back.png" style="margin-right: 10px;"/>Kembali</a>
+        </span>
         <h2 class="text-center"> Restoran IF330</h2>
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -62,9 +48,9 @@ if(isset($_GET['category'])){
                     <tbody>
 
                     <?php
-$index = 0; // Initialize a variable to create unique IDs
+$index = 0;
 while ($hasil = mysqli_fetch_array($query)) {
-    $index++; // Increment the index for each row
+    $index++;
     echo "<tr>";
     echo "<td><a href='detail.php?id=" . $hasil['id'] . "'><img src='" . $hasil['img'] . "' width='100' height='100'></a></td>";
     echo "<td><a href='detail.php?id=" . $hasil['id'] . "'>" . $hasil['nama'] . "</a></td>";
@@ -85,9 +71,6 @@ while ($hasil = mysqli_fetch_array($query)) {
 ?>
                     </tbody>
                 </table>
-                <div class="mt-3">
-                    <a href="category.php"><button class="btn btn-primary" type="button">Back</button></a>
-                </div>
             </div>
         </div>
     </div>
