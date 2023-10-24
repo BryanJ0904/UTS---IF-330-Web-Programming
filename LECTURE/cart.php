@@ -81,7 +81,7 @@
                                         </tr>';
                                 }
                                 if($counter==0) {
-                                    ?><script> document.getElementById("cont").innerHTML = '<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>Keranjang-mu kosong</strong></h3><h4>Tambahkan barang sebelum check-out.</h4> <a href="category.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">Lanjut belanja</a> </div></div></div></div>';</script> <?php
+                                    ?><script> document.getElementById("cont").innerHTML = '<div class="col-md-12 my-5"><div class="card"><div class="card-body cart"><div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3"><h3><strong>Keranjang-mu kosong</strong></h3><h4>Tambahkan barang sebelum check-out.</h4> <a href="category.php" class="btn btn-primary cart-btn-transform m-3" data-abc="true">Lanjut Belanja</a> </div></div></div></div>';</script> <?php
                                 }
                             ?>
                         </tbody>
@@ -93,7 +93,7 @@
                     <div class="pt-4 border bg-light rounded p-3">
                         <h5 class="mb-3 text-uppercase font-weight-bold text-center">Daftar Pesanan</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Harga<span>Rs. <?php echo $totalPrice ?></span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0 bg-light">Total Harga<span>Rp. <?php echo $totalPrice ?></span></li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-light">Biaya ekspedisi<span>Rp. 0</span></li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3 bg-light">
                                 <div>

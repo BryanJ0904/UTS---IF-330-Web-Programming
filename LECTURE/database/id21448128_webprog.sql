@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 21, 2023 at 08:32 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Host: localhost:3306
+-- Generation Time: Oct 24, 2023 at 12:43 PM
+-- Server version: 10.5.20-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `webprog`
+-- Database: `id21448128_webprog`
 --
 
 -- --------------------------------------------------------
@@ -41,8 +41,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `menu_name`, `user_id`, `menu_id`, `menu_price`, `quantity`) VALUES
-(22, 'CanapÃ©', 9, 3, 150000, 1),
-(23, 'Nasi Goreng', 10, 2, 20000, 1);
+(27, 'Spaghetti', 9, 1, 15000, 5),
+(29, 'Spaghetti', 1, 1, 15000, 5),
+(30, 'Canape', 12, 3, 25000, 1),
+(31, 'Es Cincau', 12, 2, 10000, 1);
 
 -- --------------------------------------------------------
 
@@ -64,9 +66,10 @@ CREATE TABLE `resto` (
 --
 
 INSERT INTO `resto` (`id`, `nama`, `harga`, `deskripsi`, `img`, `category`) VALUES
-(1, 'Cincau Sultan', '20000', 'Cincau sultan enak bet', 0x52657365702d45732d43696e6361752d556e74756b2d42696b696e2d42756b612d50756173612d4a6164692d54616d6261682d4e696b6d61742d31323030783930302e6a7067, 'drinks'),
-(2, 'Nasi Goreng', '20000', 'Makanan enak nasi digoreng', 0x646f776e6c6f61642e6a706567, 'lunch'),
-(3, 'CanapÃ©', '150000', ' terbuat dari roti berukuran sekali gigit yang di atasnya diberi aneka topping, mulai dari tuna hingga keju', 0x63616e6170652e6a7067, 'appetizer');
+(1, 'Spaghetti', '15000', 'Mie asal Italia yang menggoda selera..!', 0x2e2f64617461626173652f696d616765732f737061676574692e6a706567, 'lunch'),
+(2, 'Es Cincau', '10000', 'Es cincau adalah minuman Indonesia yang menyegarkan, terbuat dari potongan cincau hitam yang disajikan dengan campuran gula merah cair, santan, dan es serut, menciptakan rasa manis dan gurih yang khas.', 0x2e2f64617461626173652f696d616765732f657363696e6361752e6a7067, 'drinks'),
+(3, 'Canape', '25000', 'Canapé adalah hidangan pembuka kecil yang terdiri dari sepotong roti atau cracker kecil yang dihias dengan berbagai macam toping seperti daging, keju, selai, atau hidangan lainnya.', 0x2e2f64617461626173652f696d616765732f63616e6170652e6a7067, 'appetizer'),
+(4, 'Sereal', '10000', 'Sereal adalah makanan yang terbuat dari biji-bijian yang diproses dan dimakan sebagai bagian dari makanan sarapan atau camilan.', 0x2e2f64617461626173652f696d616765732f63657265616c2e6a7067, 'breakfast');
 
 -- --------------------------------------------------------
 
@@ -89,9 +92,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `password`, `lahir`, `gender`) VALUES
-(8, 'Matt', 'BJ', 'mattbj@gmail.com', '7a8c2933c736d1ab59d3710cf83dfab6', '2004-05-21', ''),
-(9, 'bryan', 'ngetes aja', 'bryan@gmail.com', '202cb962ac59075b964b07152d234b70', '2023-10-16', 'Male'),
-(10, 'mark', 'vincent', 'mark@gmail.com', '202cb962ac59075b964b07152d234b70', '2023-10-05', 'Male');
+(1, 'admin', 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1999-01-01', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -123,19 +124,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `resto`
 --
 ALTER TABLE `resto`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

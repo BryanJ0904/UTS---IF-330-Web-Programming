@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "webprog");
+$con = mysqli_connect("localhost", "id21448128_metiu", "1ni_password_DBLec", "id21448128_webprog");
 
 if(isset($_GET['category'])){
     $q = "SELECT img, nama, id, deskripsi, harga FROM resto where category ='" . $_GET['category'] . "';";
